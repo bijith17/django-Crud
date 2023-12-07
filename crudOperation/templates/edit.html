@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- sweetalert -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/sweetalert/2.1.2/sweetalert.min.js" integrity="sha512-AA1Bzp5Q0K1KanKKmvN/4d3IRKVlv9PYgwFPvm32nPO6QS8yH1HO7LbgB1pgiOxPtfeg5zEn2ba64MUcqJx6CA==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <!-- sweetalert -->
+    <!-- tailwindcss -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- tailwindcss -->
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Hedvig+Letters+Sans&display=swap');
+      
+              body{
+                  font-family: 'Hedvig Letters Sans', sans-serif;
+                  
+                  }
+            </style>
+    <title>Document</title>
+</head>
+<body>
+
+    <div class="grid place-items-center mt-10">
+        <h1 class="text-3xl">Edit Value</h1>
+        <form method="post"  class="bg-slate-200 w-96 p-10">
+            {% csrf_token %}
+            <div class="formElement">
+                <input type="text" name="name" value="{{data.name}}" class=" border-b border-slate-400 my-3 py-2 bg-transparent focus:outline-none"  placeholder="Enter Name *" id="">
+            </div>
+            <div class="formElement">
+                <input type="text" name="mobile" value="{{data.mobile}}"  class=" border-b border-slate-400 my-3 py-2  bg-transparent focus:outline-none" placeholder="Enter Mobile *" id="">
+            </div>
+            <div class="formElement">
+                <input type="submit" class="bg-gray-400 hover:bg-gray-600 hover:text-white px-3 py-1 rounded shadow " value="Register">
+            </div>
+        </form>
+        <a href="{% url '' %}">
+            <button class="bg-blue-200 py-2 px-5 hover:bg-green-200 my-2">View Table</button>
+        </a>
+    </div>
+        
+        {% for msg in messages %}
+    <script>
+        
+            Swal.fire({
+                title: "The Internet?",
+                text: "{{msg}}",
+                icon: "question"
+            });
+            </script>
+    {% endfor %}
+</body>
+</html>

@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <title>Document</title>
+    <style>
+  @import url('https://fonts.googleapis.com/css2?family=Hedvig+Letters+Sans&display=swap');
+
+        body{
+            font-family: 'Hedvig Letters Sans', sans-serif;
+            
+            }
+      </style>
+</head>
+<body>
+    
+    {% for msg in messages %}
+     <script>
+        Swal.fire({
+            title: "Good job!",
+            text: "{{msg}}",
+            icon: "success"
+            });
+    </script>
+    {% endfor %}
+
+    <div class=" p-10">
+        <table class=" bg-gray-100 shadow-xl w-[600px]" >
+           <a href="{% url 'add' %}">
+               <button class="bg-slate-500 px-7 py-2 m-3 hover:bg-slate-300 ">ADD</button>
+           </a> 
+            
+            <tr class="p-5">
+                <th class="px-5 py-2 border border-slate-400">ID</th>
+            <th class="px-5 py-2 border border-slate-400">NAME</th>
+            <th class="px-5 py-2 border border-slate-400">MOBILE</th> 
+            <th class="px-5 py-2 border border-slate-400">OPTION</th>
+
+        </tr>
+        
+        {% for dataView in  views %}
+        <tr>
+            <td class="px-5 py-2 border border-slate-400">{{dataView.id}}</td>
+            <td class="px-5 py-2 border border-slate-400">{{dataView.name}} </td>
+            <td class="px-5 py-2 border border-slate-400">{{dataView.mobile}} </td>
+            <td class="px-2 py-1 border border-slate-400">
+               <a href="edit/{{dataView.id}}">
+                   <button class="px-4 py-2 bg-blue-200 border border-slate-1 rounded hover:bg-blue-400 translation duration-300 ">EDIT</button>
+               </a>
+               <a href="{% url 'delete' dataView.id %}">
+                   <button class="px-4 py-2 bg-red-200 border border-slate-1 rounded hover:bg-red-400 translation duration-300 ">DELETE</button>
+               </a>
+            </td>
+        </tr>
+        {% endfor %}
+            
+        
+        
+        
+    </table>
+    
+</div>
+</body>
+</html>
